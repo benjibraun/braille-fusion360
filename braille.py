@@ -574,7 +574,7 @@ def run(context):
     
     try:
         
-        doboz = ui.inputBox('szoveg','szöveg','abcdefghijklmnopqrstuvwyz')
+        doboz = ui.inputBox('braille','szöveg','i stand with ceu')
         szoveg= doboz [0]
         x=len(szoveg)
         ho=6*x+3
