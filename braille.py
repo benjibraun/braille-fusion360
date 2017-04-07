@@ -1,7 +1,7 @@
 #Author-Benjamin Braun
 #Description- braille fusion360 Python 
 
-import adsk.core, adsk.fusion, adsk.cam, traceback, math
+import adsk.core, adsk.fusion, adsk.cam, traceback, math, string
 app = adsk.core.Application.get()
 ui  = app.userInterface
 design = app.activeProduct
@@ -593,87 +593,12 @@ def run(context):
         #kis szines pöttyök
         
         for n in range(0,x):
-            
+             
             betu= szoveg [n]
-            
-            if betu == 'a':
-                ca= betu
-                vonal(n,ca)
-            elif betu == 'b':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'c':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'd':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'e':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'f':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'g':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'h':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'i':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'j':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'k':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'l':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'm':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'n':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'o':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'p':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'q':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'r':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 's':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 't':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'u':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'v':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'w':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'x':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'y':
-                ca=betu
-                vonal(n,ca)
-            elif betu == 'z':
-                ca=betu
-                vonal(n,ca)
+            # Köszi Máté!
+            abc = string.ascii_lowercase[:32]
+            if betu in abc:
+                 vonal(n,betu)
                 
         mind= adsk.core.ObjectCollection.create() 
         ig=rootComp.bRepBodies.count
