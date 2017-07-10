@@ -1,6 +1,5 @@
 #Author-Benjamin Braun
 #Description- braille fusion360 Python 
-
 import adsk.core, adsk.fusion, adsk.cam, traceback, math, string
 app = adsk.core.Application.get()
 ui  = app.userInterface
@@ -12,8 +11,6 @@ sketches = rootComp.sketches;
 extrudes = rootComp.features.extrudeFeatures
 xyPlane = rootComp.xYConstructionPlane;
 xzPlane = rootComp.xZConstructionPlane;
-
-
 def vonal(n,ca):
     xy = sketches.add(xyPlane)
     korxy = xy.sketchCurves.sketchCircles
@@ -44,536 +41,114 @@ def vonal(n,ca):
     #j3/r3
     keto3=vonalxy.addByTwoPoints(adsk.core.Point3D.create(pozx2, alap , -pozz), adsk.core.Point3D.create(pozx2, mag, -pozz))
     korxy.addByCenterRadius(adsk.core.Point3D.create(pozx2, alap2 , -pozz), 0.9)
+def abc (kord):
+    daka=len(kord) 
+        for zoty in range(0,daka):        
+            hupli = kord[zoty]
+            if hupli == 1:
+                profa = xy.profiles.item(4)
+                revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+            elif hupli == 2:
+                profa = xy.profiles.item(0)
+                revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+            elif hupli == 3:
+                profa = xy.profiles.item(10)
+                revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+            elif hupli == 4:
+                profa = xy.profiles.item(6)
+                revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+            elif hupli == 5:
+                profa = xy.profiles.item(2)
+                revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+            elif hupli == 6:
+                profa = xy.profiles.item(8)
+                revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+            angle = adsk.core.ValueInput.createByReal(math.pi+180)
+            revInput.setAngleExtent(False, angle)
+            revolves.add(revInput)
     if ca == 'a':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)  
+        kord=[1]
+        abc (kord)
 
     elif ca == 'b':
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-            
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
+        kord=[1,2]
+        abc (kord)     
     elif ca == 'c':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,4]
+        abc (kord)
     elif ca == 'd':
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-       
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[5,1,4]
+        abc (kord)
     elif ca == 'e':
-       
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,5]
+        abc (kord)
     elif ca == 'f':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,4]
+        abc (kord)
     elif ca == 'g':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,4,5,]
+        abc (kord)
     elif ca == 'h':
-
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,4]
+        abc (kord)
     elif ca == 'i':
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[2,4]
+        abc (kord)
     elif ca == 'j':
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[2,4,5]
+        abc (kord)
     elif ca == 'k':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,3]
         #hiper hiper
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        abc (kord)
     elif ca == 'l':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,3]
+        abc (kord)
     elif ca == 'm':
         #mitesznek a méhekek?
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-    
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,3,4]
+        abc (kord)
     elif ca == 'n':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,3,5,4]
+        abc (kord)
     elif ca == 'o':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-    
+        kord=[1,3,5]
+        abc (kord)
     elif ca == 'p':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-    
+        kord=[1,2,3,4]
+        abc (kord)
     elif ca == 'q':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-       
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,3,4,5]
+        abc (kord)
     elif ca == 'r':
-       
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-       
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,3,5]
+        abc (kord)
     elif ca == 's':
-       
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[2,3,4]
+        abc (kord)
     elif ca == 't':
-        
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[2,3,4,5]
+        abc (kord)
     elif ca == 'u':
-       
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        #kár hogy a csigának nincs haja
-        profa = xy.profiles.item(8)
-        revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,3,6]
+        abc (kord)
     elif ca == 'v':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(8)
-        revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,2,3,6]
+        abc (kord)
     elif ca == 'w':
-        
-        profa = xy.profiles.item(0)
-        revInput = revolves.createInput(profa, egy2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(8)
-        revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[2,6,5,4]
+        abc (kord)
     elif ca == 'x':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(8)
-        revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,6,3,4]
+        abc (kord)
     elif ca == 'y':
-        
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(8)
-        revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(6)
-        revInput = revolves.createInput(profa, keto1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
+        kord=[1,6,3,5,4]
+        abc (kord)
     elif ca == 'z':
-        profa = xy.profiles.item(4)
-        revInput = revolves.createInput(profa, egy1, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(8)
-        revInput = revolves.createInput(profa, keto3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(10)
-        revInput = revolves.createInput(profa, egy3, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
-        profa = xy.profiles.item(2)
-        revInput = revolves.createInput(profa, keto2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        angle = adsk.core.ValueInput.createByReal(math.pi+180)
-        revInput.setAngleExtent(False, angle)
-        revolves.add(revInput)
-        
+        kord=[1,6,3,5]
+        abc (kord)  
 def run(context):
-    
     try:
-        
         doboz = ui.inputBox('braille','szöveg','i stand with ceu')
         szoveg= doboz [0]
         x=len(szoveg)
@@ -590,28 +165,20 @@ def run(context):
         profk = xz.profiles.item(0)
         distance = adsk.core.ValueInput.createByReal(2)
         extrudes.addSimple(profk, distance, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
-        #kis szines pöttyök
-        
         for n in range(0,x):
-             
             betu= szoveg [n]
             # Köszi Máté!
             abc = string.ascii_lowercase[:32]
             if betu in abc:
-                 vonal(n,betu)
-                
+                 vonal(n,betu)   
         mind= adsk.core.ObjectCollection.create() 
         ig=rootComp.bRepBodies.count
         target=rootComp.bRepBodies.item(al)
-        
         for neveletlengorilla in range(al+1,ig):
             macko=rootComp.bRepBodies.item(neveletlengorilla)
             mind.add(macko)
-            
         join1 = combine.createInput(target , mind)
         combine.add(join1) 
-        
     except:
         if ui:
             ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
-
